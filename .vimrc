@@ -96,6 +96,8 @@ if has('vim_starting')
 endif
 call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
+NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'Shougo/neocomplcache'
 call neobundle#end()
 filetype plugin indent on
 NeoBundleCheck
@@ -103,13 +105,11 @@ NeoBundleCheck
 "---
 " VIM-QUICKRUN
 "---
-NeoBundle 'thinca/vim-quickrun'
 let g:quickrun_config={'*': {'split': 'vertical'}}
 
 "---
 " neocomplcache
 "---
-NeoBundle 'Shougo/neocomplcache'
 let g:acp_enableAtStartup = 0
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_smart_case = 1

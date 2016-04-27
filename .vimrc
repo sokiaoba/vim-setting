@@ -44,19 +44,16 @@ nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
 set backspace=indent,eol,start
 
-"-------------------------------------------------------------------------------
-" INDENT
-"-------------------------------------------------------------------------------
+""-------------------------------------------------------------------------------
+"" INDENT
+""-------------------------------------------------------------------------------
 set autoindent
 set smartindent
 set cindent
 set tabstop=4 
 set shiftwidth=4 
 set fileformat=unix
-:setl noexpandtab
-autocmd FileType python setl nocindent
-autocmd FileType python setl smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
-autocmd FileType python setl tabstop=4 shiftwidth=4 softtabstop=4
+set noexpandtab
 
 "-------------------------------------------------------------------------------
 " SEARCH
@@ -90,16 +87,16 @@ let g:ftplugin_sql_omni_key = '<Leader>sql'
 "---
 " NEO BUNDLE
 "---
-if has('vim_starting')
-    if &compatible
-        set nocompatible
-    endif
-    set runtimepath+=~/.vim/bundle/neobundle.vim/
+if 0 | endif
+if &compatible
+	set nocompatible
 endif
+set runtimepath^=~/.vim/bundle/neobundle.vim/
+
 call neobundle#begin(expand('~/.vim/bundle/'))
-NeoBundleFetch 'Shougo/neobundle.vim'
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'Shougo/neocomplcache'
+	NeoBundleFetch 'Shougo/neobundle.vim'
+	NeoBundle 'thinca/vim-quickrun'
+	NeoBundle 'Shougo/neocomplcache'
 call neobundle#end()
 filetype plugin indent on
 NeoBundleCheck
@@ -110,7 +107,7 @@ NeoBundleCheck
 let g:quickrun_config={'*': {'split': 'vertical'}}
 
 "---
-" neocomplcache
+" NEOCOMPLCACHE
 "---
 let g:acp_enableAtStartup = 0
 let g:neocomplcache_enable_at_startup = 1
@@ -120,3 +117,11 @@ let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 let g:neocomplcache_dictionary_filetype_lists = {
 			\ 'default' : ''
 			\ }
+
+"-------------------------------------------------------------------------------
+" INDENT OF PYTHON FILE
+"-------------------------------------------------------------------------------
+" Somehow these don't work unless write here :(
+autocmd Filetype python setl noexpandtab tabstop=4 shiftwidth=4
+autocmd Filetype python setl nocindent
+autocmd FileType python setl smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class

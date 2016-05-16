@@ -97,6 +97,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 	NeoBundleFetch 'Shougo/neobundle.vim'
 	NeoBundle 'thinca/vim-quickrun'
 	NeoBundle 'Shougo/neocomplcache'
+	NeoBundle 'scrooloose/nerdtree'
 call neobundle#end()
 filetype plugin indent on
 NeoBundleCheck

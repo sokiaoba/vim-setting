@@ -111,17 +111,13 @@ endif
 
 filetype plugin indent on
 syntax enable
+:colorscheme molokai
 
 if dein#check_install()
   call dein#install()
 endif
 
-:colorscheme molokai
-
-"-------------------------------------------------------------------------------
 " neocomplete.vim
-"-------------------------------------------------------------------------------
-
 let g:acp_enableAtStartup = 0
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1

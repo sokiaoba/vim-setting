@@ -4,7 +4,7 @@
 set nobackup
 set noswapfile
 set showmode
-set guifont=Osaka－等幅:h14
+set guifont=Osaka-Mono:h14
 set encoding=utf-8
 set fileencodings=utf8
 set confirm
@@ -27,7 +27,6 @@ match ZenkakuSpace /　/
 :set ttyfast
 set laststatus=2
 :set splitright
-:colorscheme peachpuff
 
 "-------------------------------------------------------------------------------
 " MOVE
@@ -53,7 +52,7 @@ set cindent
 set tabstop=4 
 set shiftwidth=4 
 set fileformat=unix
-set noexpandtab
+set expandtab
 
 "-------------------------------------------------------------------------------
 " SEARCH
@@ -84,40 +83,40 @@ let g:ftplugin_sql_omni_key = '<Leader>sql'
 " PLUGIUNS
 "-------------------------------------------------------------------------------
 
-"---
-" NEO BUNDLE
-"---
-if 0 | endif
 if &compatible
-	set nocompatible
+  set nocompatible
 endif
-set runtimepath^=~/.vim/bundle/neobundle.vim/
 
-call neobundle#begin(expand('~/.vim/bundle/'))
-	NeoBundleFetch 'Shougo/neobundle.vim'
-	NeoBundle 'thinca/vim-quickrun'
-	NeoBundle 'Shougo/neocomplcache'
-	NeoBundle 'scrooloose/nerdtree'
-call neobundle#end()
+set runtimepath+=$HOME/.cache/dein/repos/github.com/Shougo/dein.vim
+
+if dein#load_state('$HOME/.cache/dein')
+  call dein#begin('$HOME/.cache/dein')
+
+  call dein#add('$HOME/.cache/dein/repos/github.com/Shougo/dein.vim')
+  call dein#add('tomasr/molokai')
+  call dein#add('Shougo/neocomplete.vim')
+  call dein#add('Shougo/neosnippet.vim')
+  call dein#add('Shougo/neosnippet-snippets')
+  call dein#add('thinca/vim-quickrun')
+  call dein#add('scrooloose/nerdtree')
+  call dein#add('keith/swift.vim')
+  call dein#add('leafgarland/typescript-vim')
+  call dein#add('fatih/vim-go')
+  call dein#add('tomlion/vim-solidity')
+  call dein#add('Shougo/deol.nvim', { 'rev': '01203d4c9' })
+
+  call dein#end()
+  call dein#save_state()
+endif
+
 filetype plugin indent on
-NeoBundleCheck
+syntax enable
 
-"---
-" VIM-QUICKRUN
-"---
-let g:quickrun_config={'*': {'split': 'vertical'}}
+if dein#check_install()
+  call dein#install()
+endif
 
-"---
-" NEOCOMPLCACHE
-"---
-let g:acp_enableAtStartup = 0
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_smart_case = 1
-let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-let g:neocomplcache_dictionary_filetype_lists = {
-			\ 'default' : ''
-			\ }
+:colorscheme molokai
 
 "-------------------------------------------------------------------------------
 " INDENT OF PYTHON FILE
